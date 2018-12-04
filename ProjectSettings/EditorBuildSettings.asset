@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Menu/MainMenu.unity
-    guid: d8618fe6a300839459587edb12a87683
+    path: Assets/MainMenu.unity
+    guid: 3fa43ecfc9c1ccc4b9dc9a6ba8d6f737
   - enabled: 1
     path: Assets/Game/GalaxianSpaceDefender.unity
     guid: 581a6bb65b688764c91428827b8946ae

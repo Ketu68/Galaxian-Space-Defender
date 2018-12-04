@@ -226,16 +226,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\bullet.cs" />
-    <Compile Include="Assets\Scripts\GSDManager.cs" />
-    <Compile Include="Assets\Scripts\MainGameMenu.cs" />
-    <Compile Include="Assets\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\ManagePlayerHealth.cs" />
-    <Compile Include="Assets\Scripts\MoveNPC.cs" />
-    <Compile Include="Assets\Scripts\MovePlayer.cs" />
-    <Compile Include="Assets\Scripts\ScrollingBackground.cs" />
-    <Compile Include="Assets\Scripts\SpawnMovingTargets.cs" />
-    <Compile Include="Assets\Scripts\zbullet.cs" />
+    <Compile Include="Assets\bullet.cs" />
+    <Compile Include="Assets\GSDManager.cs" />
+    <Compile Include="Assets\MainGameMenu.cs" />
+    <Compile Include="Assets\MainMenu.cs" />
+    <Compile Include="Assets\ManagePlayerHealth.cs" />
+    <Compile Include="Assets\MoveNPC.cs" />
+    <Compile Include="Assets\MovePlayer.cs" />
+    <Compile Include="Assets\ScrollingBackground.cs" />
+    <Compile Include="Assets\SpawnMovingTargets.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -269,6 +268,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\zbullet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />

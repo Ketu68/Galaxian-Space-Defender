@@ -8,69 +8,109 @@ using UnityEngine.SceneManagement;
 public class GSDManager : MonoBehaviour
 {
     public static GSDManager Instance;
+    public Canvas menuCanvas, inGameCanvas, gameOverCanvas, pauseCanvas;
     public AudioSource source, soundtrack;
     public AudioClip fireSound, playerHitSound, alienHitSound, alienFire, thrust, SoundTrack;
-    public GameObject explosion, laser;
 
     public GSDManager GetInstance() { return Instance; }
+    public GameState currentGameState = GameState.menu;
 
-    public int score, lives;
+    public int score;
     public string nextSceneName;
     public float waitTime=3f;
-    public int maxenemies = 12, enemies = 0;
+
+    public enum GameState
+    {
+        menu, inGame, paused, gameOver
+    }
 
     public void Awake()
     {
         Instance = this;
-        score = 0;
-        lives = 3;
-        //AudioSource source = GetComponent<AudioSource>();
+        currentGameState = GameState.menu;
+        //SceneManager.LoadScene(0);
     }
 
     void Start()
     {
-        GameObject.Find("scoreUI").GetComponent<Text>().text = "SCORE : " + score;
-        for (int x = 0; x < lives; x++) GameObject.Find("Lives").GetComponent<Text>().text = "LIVES : " + lives;
+
     }
 
-    public void IncreaseScore()
+    public void StartGame()
     {
-        score += 100;
-        if (score % 10000 == 0)
-        {
-            lives++;
-        }
-
-        GameObject.Find("scoreUI").GetComponent<Text>().text = "SCORE : " + score;
-        for (int x = 0; x < lives; x++) GameObject.Find("Lives").GetComponent<Text>().text = "LIVES : " + lives;
-
+        SetGameState(GameState.inGame);
+        SceneManager.LoadScene(1);
     }
-
-    public IEnumerator FreezeFor()
+    public void PauseGame()
     {
-        if (GSDManager.Instance.source.isPlaying) GSDManager.Instance.source.Stop();
-        yield return new WaitForSeconds(2);
-        StartOver();
+        Debug.Log("GamePaused");
+        SetGameState(GameState.paused);
+        SceneManager.LoadScene(0);
     }
-
-    public void StartOver()
+    public void GameOver()
     {
-        lives--;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //gameObject.transform.Translate(Vector3.left * 1f);
-
-        //Destroy(transform.gameObject);
-
-        //if (GSDManager.Instance.soundtrack.isPlaying) GSDManager.Instance.soundtrack.Stop();
-        //if (!GSDManager.Instance.source.isPlaying) GSDManager.Instance.EndTheScene();
-        //else StartCoroutine(FreezeFor());
-        //if (!GSDManager.Instance.source.isPlaying) GSDManager.Instance.EndTheScene();
+        SetGameState(GameState.gameOver);
+        SceneManager.LoadScene(0);
     }
-
+    public void BackToMenu()
+    {
+        SetGameState(GameState.menu);
+        SceneManager.LoadScene(0);
+    }
 
     public void EndTheScene()
     {
         SceneManager.LoadScene(0);
+        //StartCoroutine(WaitAndLoadScene());
+    }
+
+    public IEnumerator WaitAndLoadScene()
+    {
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(0);
+    }
+
+    public void SetGameState(GameState newGameState)
+    {
+        if (newGameState == GameState.menu)
+        {
+            menuCanvas.enabled = true;
+            inGameCanvas.enabled = false;
+            gameOverCanvas.enabled = false;
+            pauseCanvas.enabled = false;
+        }
+        else if (newGameState == GameState.inGame)
+        {
+            menuCanvas.enabled = false;
+            inGameCanvas.enabled = true;
+            gameOverCanvas.enabled = false;
+            pauseCanvas.enabled = false;
+        }
+        else if (newGameState == GameState.paused)
+        {
+            menuCanvas.enabled = false;
+            inGameCanvas.enabled = false;
+            gameOverCanvas.enabled = false;
+            pauseCanvas.enabled = true;
+        }
+        else if (newGameState == GameState.gameOver)
+        {
+            menuCanvas.enabled = false;
+            inGameCanvas.enabled = false;
+            gameOverCanvas.enabled = true;
+            pauseCanvas.enabled = false;
+        }
+        currentGameState = newGameState;
+    }
+
+    public void QuitGame()
+    {
+        //Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
     }
 }
 

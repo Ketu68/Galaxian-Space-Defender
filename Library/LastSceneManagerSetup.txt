@@ -1,4 +1,7 @@
 sceneSetups:
-- path: Assets/Game/GalaxianSpaceDefender.unity
+- path: Assets/MainMenu.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Game/GalaxianSpaceDefender.unity
+  isLoaded: 1
+  isActive: 0

@@ -22,7 +22,7 @@ public class MoveNPC : MonoBehaviour
 
         //float xrange = Random.Range(4, 6);
         //float yrange = Random.Range(4, 6);
-        float shootrand = Random.Range(1, 600);
+        float shootrand = Random.Range(1, 100);
         float moverand = Random.Range(1, 20);
 
         timer += Time.deltaTime;
@@ -38,7 +38,6 @@ public class MoveNPC : MonoBehaviour
         }
         if (shootrand == 3)
         {
-            shootrand = 0;
             Shoot();
         }
 
@@ -61,4 +60,15 @@ public class MoveNPC : MonoBehaviour
         b.GetComponent<Rigidbody2D>().AddForce(Vector3.left * 200);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GSDManager.Instance.source.PlayOneShot(GSDManager.Instance.playerHitSound, 1);
+            GameObject exp = (GameObject)(Instantiate(explosion, transform.position, Quaternion.identity));
+            Destroy(exp, .5f);
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

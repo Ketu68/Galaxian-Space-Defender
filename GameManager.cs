@@ -9,7 +9,7 @@ public static class GSDManager : MonoBehaviour
 {
     public AudioClip fireSound, hitSound;
 
-    // This lets other scripts in the scene find this single instance without searching.
+    // This lets other scripts in the scene find this instance without searching.
     static GameManager _instance;
     public GameManager GetInstance() { return _instance; }
 

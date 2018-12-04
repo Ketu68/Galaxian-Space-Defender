@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4340334759941894}
   - component: {fileID: 212539468085880126}
   - component: {fileID: 114028237885854360}
+  - component: {fileID: 114879589745073260}
   - component: {fileID: 50304039395643604}
   - component: {fileID: 61948610093465950}
   m_Layer: 0
@@ -101,9 +102,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laser: {fileID: 1047953093542456, guid: 513788c301b19754196bccc2b8ab82cf, type: 2}
   explosion: {fileID: 1232013341239612, guid: f6a685b223788a74795704b752b07210, type: 2}
-  shipflip: {fileID: 0}
   facingright: 1
   firedirection: right
+--- !u!114 &114879589745073260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982074545295588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7048ea281a4f7cf46a7db8fd45e9a941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  explosion: {fileID: 1232013341239612, guid: f6a685b223788a74795704b752b07210, type: 2}
+  laser: {fileID: 1047953093542456, guid: 513788c301b19754196bccc2b8ab82cf, type: 2}
+  newObject: {fileID: 1713283382247232, guid: 7dce84fa98d6e434e8f2182d280dec64, type: 2}
+  t: {fileID: 0}
 --- !u!212 &212539468085880126
 SpriteRenderer:
   m_ObjectHideFlags: 1
